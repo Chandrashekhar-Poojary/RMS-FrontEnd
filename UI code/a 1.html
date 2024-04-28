@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .table-container {
+            margin-top: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            /* Increased row height */
+            text-align: left;
+        }
+        
+        th {
+            background-color: orange;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .add-btn,
+        .edit-btn,
+        .delete-btn {
+            background-color: blue;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            width: 100px;
+            margin-right: 5px;
+        }
+        
+        .add-btn {
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        
+        .edit-btn {
+            margin-bottom: 5px;
+            /* Space between edit and delete buttons */
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="table-container">
+            <table id="product-table">
+                <thead>
+                    <tr>
+                        <th>Sl. NO</th>
+                        <th>Customer Name</th>
+                        <th>Customer No</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Quantity Purchased</th>
+                        <th>Amount</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Employee data rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="button-container" class="button-container"></div>
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productData = [{
+                slno: 1,
+                Cname: 'John',
+                cno: '9875646578',
+                prodName: 'Apple',
+                category: 'Vegetables & Fruits',
+                quantity: '2kilo',
+                amount: '120'
+            }, {
+                slno: 2,
+                Cname: 'Amar',
+                cno: '9823456782',
+                prodName: 'Wheat',
+                category: 'Cereals',
+                quantity: '1 Pack',
+                amount: '20'
+            }, {
+                slno: 3,
+                Cname: 'Priya',
+                cno: '8762431527',
+                prodName: 'Biscuits',
+                category: 'packaged Food',
+                quantity: '1 Kilo',
+                amount: '140'
+            }, {
+                slno: 4,
+                Cname: 'Faran',
+                cno: '7835324295',
+                prodName: 'tooth paste',
+                category: 'Cleaning & HYgiene',
+                quantity: '2 Pack',
+                amount: '40'
+            }, {
+                slno: 5,
+                Cname: 'Neetu',
+                cno: '9087652431',
+                prodName: 'Rice',
+                category: 'Cereals',
+                quantity: '1Kilo',
+                amount: '50'
+            }, {
+                slno: 6,
+                Cname: 'Sandy',
+                cno: '8762425263',
+                prodName: 'Strawberry',
+                category: 'Vegetables & Fruits',
+                quantity: '250 grams',
+                amount: '200'
+            }, {
+                slno: 7,
+                Cname: 'Gaurav',
+                cno: '97634251829',
+                prodName: 'Chocolate',
+                category: 'Packged Food',
+                quantity: '25 packs',
+                amount: '500'
+            }];
+
+            const tableBody = document.querySelector('#product-table tbody');
+            const buttonContainer = document.querySelector('#button-container');
+            //const addEmployeeButton = document.getElementById('add-employee-btn');
+
+            productData.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.slno}</td>
+                    <td>${product.Cname}</td>
+                    <td>${product.cno}</td>
+                    <td>${product.prodName}</td>
+                    <td>${product.category}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.amount}</td>
+                `;
+                tableBody.appendChild(row);
+
+                const buttonRow = document.createElement('td');
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.classList.add('edit-btn');
+                // const deleteButton = document.createElement('button');
+                // deleteButton.textContent = 'Delete';
+                // deleteButton.classList.add('delete-btn');
+
+                 buttonRow.appendChild(editButton);
+               // buttonRow.appendChild(deleteButton);
+                row.appendChild(buttonRow);
+            });
+
+            // addEmployeeButton.addEventListener('click', () => {
+            //    console.log('Add Employee button clicked!');
+            //});
+        });
+    </script>
+</body>
+
+</html>

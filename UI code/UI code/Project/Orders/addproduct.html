@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+ 
+<head>
+ 
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Add Category</title>
+ 
+    <style>
+        body {
+ 
+            font-family: Arial, sans-serif;
+ 
+            margin: 0;
+ 
+            padding: 0;
+ 
+        }
+ 
+        .containers {
+ 
+            background-color: #6c34ea;
+ 
+            padding: 20px;
+ 
+            border-radius: 0px;
+ 
+            width: 500px !important;
+
+            height: 70vh;
+ 
+            margin: 50px auto;
+           
+ 
+        }
+ 
+        .form-title {
+ 
+            color: white;
+ 
+            text-align: left;
+ 
+        }
+ 
+        .form-group {
+ 
+            margin-bottom: 20px;
+ 
+        }
+ 
+        .form-group input[type="text"] {
+ 
+            width: calc(100% - 40px);
+ 
+            height: 8px;
+ 
+            padding: 10px;
+ 
+            border: none;
+ 
+            border-radius: 0px;
+ 
+            outline: none;
+ 
+        }
+ 
+        .add-product-button,
+ 
+        .remove-product-button {
+ 
+            background-color: white;
+ 
+            color: blueviolet;
+ 
+            border: none;
+ 
+            border-radius: 50%;
+ 
+            width: 30px;
+ 
+            height: 30px;
+ 
+            cursor: pointer;
+ 
+            /* margin-left: 10px; */
+            /* margin-top: 15px; */
+ 
+        }
+ 
+        .add-button {
+ 
+            background-color: white;
+ 
+            color: blueviolet;
+ 
+            border: none;
+ 
+            border-radius: 5px;
+ 
+            padding: 8px 20px;
+ 
+            cursor: pointer;
+ 
+            display: block;
+ 
+            margin: 10px auto;
+ 
+        }
+    </style>
+ 
+</head>
+ 
+ 
+<body>
+    <div id="header"> </div>
+    <div class="d-flex justify-content-start">
+        <div id="dashboard"> </div>
+ 
+        <div class="container containers mx-auto px-auto">
+ 
+            <h2 class="form-title">Add Category</h2>
+ 
+            <form id="categoryForm">
+ 
+                <div class="form-group">
+ 
+                    <label for="categoryName" style="color: white;">Category Name</label>
+ 
+                    <input type="text" id="categoryName" name="categoryName" required>
+ 
+                </div>
+ 
+                <div class="form-group" id="productListContainer">
+ 
+                    <label for="productList" style="color: white;">Product List</label>
+ 
+                    <input type="text" id="productList" name="productList[]" required placeholder="Product 1">
+ 
+                    <button type="button" class="add-product-button" onclick="addProductTextbox()">+</button>
+ 
+                </div>
+ 
+                <button type="submit" class="add-button">Add</button>
+ 
+            </form>
+ 
+        </div>
+ 
+ 
+        <script>
+ 
+            let productCount = 1; // Define productCount here
+ 
+            function addProductTextbox() {
+ 
+                const productListContainer = document.getElementById('productListContainer');
+ 
+                const newProductTextbox = document.createElement('input');
+ 
+                newProductTextbox.type = 'text';
+ 
+                newProductTextbox.name = 'productList[]';
+ 
+                newProductTextbox.required = true;
+ 
+                newProductTextbox.placeholder = `Product ${productCount + 1}`;
+ 
+                productCount++;
+ 
+                const removeButton = document.createElement('button');
+ 
+                removeButton.type = 'button';
+ 
+                removeButton.classList.add('remove-product-button');
+ 
+                removeButton.textContent = '-';
+ 
+                removeButton.onclick = function () {
+ 
+                    productListContainer.removeChild(newProductTextbox);
+ 
+                    productListContainer.removeChild(removeButton);
+ 
+                    productCount--;
+ 
+                };
+ 
+                productListContainer.insertBefore(newProductTextbox, productListContainer.lastElementChild);
+ 
+                productListContainer.insertBefore(removeButton, productListContainer.lastElementChild);
+ 
+            }
+ 
+        </script>
+ 
+        <script src="C:\_My_Files\RMS\UI code\Project\Templates\header.js"> </script>
+ 
+        <script src="C:\_My_Files\RMS\UI code\Project\Templates\dashboard.js"> </script>
+ 
+        <script>
+            document.getElementById('toggleButton').addEventListener('click', function () {
+                var sidebar = document.getElementById('sidebar');
+                var toggleButton = document.getElementById('toggleButton');
+                var image = document.querySelector('.resize');
+                if (sidebar.classList.contains('collapsed')) {
+                   
+                    sidebar.classList.remove('collapsed');
+                    toggleButton.style.left = "200px";
+                } else {
+                    sidebar.classList.add('collapsed');
+                    toggleButton.style.left = '5px';
+                   
+                }
+            });
+        </script>
+ 
+</body>
+ 
+</html>

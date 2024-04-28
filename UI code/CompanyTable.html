@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompanyTable</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href=
+    "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="import" href="./try.html">
+</head>
+<body>
+    <!-- <include src="./try.html"></include> -->
+    <!-- <?php include 'other.html'; ?> -->
+    <div   class="mx-auto my-5 px-5 pb-4 pt-3 " style="width: 100%; height: 200px;">
+        <table class="table  table-hover table-striped"  id="fruitTable">
+                <thead class="text-center p-2" style="background-color: rgb(255, 213, 0);">
+                    <th >S.No</th>
+                    <th >Company Name</th>
+                    <th >Category Name</th>
+                    <th >Product</th>
+                </thead>
+                <tbody >
+                    <tr class="text-center">
+                        <td>1</td>
+                        <td>Xyz</td>
+                        <td>Fruit</td>
+                        <td>Apple</td>
+                    </tr>
+                    
+                    
+                </tbody>
+        </table>
+        <center><a class="btn btn-primary" href="./AddCompany.html" role="button">ADD</a>
+        
+
+    </div>
+    
+    <script>
+
+        const item = [{
+            SNo:"2",
+            CompanyName:"AWE",
+            CategoryName:"Fruits",
+            Product:"Banana"
+        },
+    {
+            SNo:"3",
+            CompanyName:"AWE",
+            CategoryName:"Fruits",
+            Product:"Orange"
+    }];
+
+    const tableBody = document.querySelector("#fruitTable tbody");
+        item.forEach((items) => {
+            const row = document.createElement('tr');     
+            row.className='text-center';       
+            row.innerHTML = `
+                <td>${items.SNo}</td>
+                <td>${items.CompanyName}</td>
+                <td>${items.CategoryName}</td>
+                <td>${items.Product}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+
+    </script>
+</body>
+</html>

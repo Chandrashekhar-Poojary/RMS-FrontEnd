@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Admin Dashboard</title>
+   
+</head>
+<body>
+    <div id="header">    </div>
+
+    <div class="d-flex justify-center-start">
+        <div id="dashboard"></div>
+        <div class="align-self-stretch d-flex justify-content-end">
+            <img class="resize" src="C:\_My_Files\RMS\photos\adminpage.jpg" alt="adminpage" width="1000px"  height="520">
+        </div>
+    </div>
+
+
+    <script src="C:\_My_Files\RMS\UI code\Project\Templates\header.js"></script>
+    <script src="C:\_My_Files\RMS\UI code\Project\Templates\dashboard.js"></script>
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function () {
+        var sidebar = document.getElementById('sidebar');
+        var toggleButton = document.getElementById('toggleButton');
+        var image = document.querySelector('.resize');
+        if (sidebar.classList.contains('collapsed')) {
+            sidebar.classList.remove('collapsed');
+            image.style.width='1000px';
+            toggleButton.style.left = '200px';
+        } else {
+            sidebar.classList.add('collapsed');
+            toggleButton.style.left = '5px';
+            image.style.width='1230px';
+
+
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title>Web Application</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+ 
+.table-container {
+    margin-top: 1rem;
+}
+ 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+ 
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Increased row height */
+    text-align: left;
+}
+ 
+th {
+    background-color: orange;
+}
+ 
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+ 
+.add-btn, .edit-btn, .delete-btn {
+    background-color: blue;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    margin-right: 5px;
+}
+ 
+.add-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+ 
+.edit-btn {
+    margin-bottom: 5px; /* Space between edit and delete buttons */
+}
+ 
+    </style>
+</head>
+<body>
+    <div id = "header"> </div>
+    <div class="d-flex justify-content-start">
+                  <div id="dashboard"> </div>
+                 <div style="width: 50%; margin-top:25px;"> <main>
+                        <div class="table-container">
+                        <table id="employee-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>PostalCode</th>
+                                    <th>Country</th>
+                                    <th>CompanyName</th>
+                                    <th>PanNumber</th>
+                                    <th>Actions</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Employee data rows will be dynamically added here -->
+                            </tbody>
+                        </table>
+                        </div>
+            
+                        <div id="button-container" class="button-container"></div>
+                   
+                </main>
+           
+                <footer>
+                    <a href="./EmployeeCredentials.html" id="add-employee-btn" class="btn btn-primary" style="margin-left: 70%;">Add Employee</a>
+                </footer>
+                <script>
+                    
+                    document.addEventListener('DOMContentLoaded', () => {
+                    const employeeData = [
+                        { id: 1, name: 'John Doe', email: 'john@example.com', phoneNumber: '1234567890', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 2, name: 'Jane Smith', email: 'jane@example.com', phoneNumber: '9876543210', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 3, name: 'David Johnson', email: 'david@example.com', phoneNumber: '4567891230', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 4, name: 'Emily Brown', email: 'emily@example.com', phoneNumber: '7894561230', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 5, name: 'Michael Davis', email: 'michael@example.com', phoneNumber: '1597534680', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 6, name: 'Sarah Wilson', email: 'sarah@example.com', phoneNumber: '3571598640', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' },
+                        { id: 7, name: 'Christopher Martinez', email: 'christopher@example.com', phoneNumber: '2583691470', Address: '2nd street, siruseri', City: 'chennai', State: 'Tamilnadu', PostalCode: '603110', Country: 'India', CompanyName: 'cognizant', PanNumber: 'CWN1988765' }
+                    ];
+           
+                    const tableBody = document.querySelector('#employee-table tbody');
+                    const buttonContainer = document.querySelector('#button-container');
+                    const addEmployeeButton = document.getElementById('add-employee-btn');
+           
+                    employeeData.forEach(employee => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${employee.id}</td>
+                            <td>${employee.name}</td>
+                            <td>${employee.email}</td>
+                            <td>${employee.phoneNumber}</td>
+                            <td>${employee.Address}</td>
+                            <td>${employee.City}</td>
+                            <td>${employee.State}</td>
+                            <td>${employee.PostalCode}</td>
+                            <td>${employee.Country}</td>
+                            <td>${employee.CompanyName}</td>
+                            <td>${employee.PanNumber}</td>
+           
+                        `;
+                        tableBody.appendChild(row);
+           
+                        const buttonRow = document.createElement('td');
+                        const editButton = document.createElement('button');
+                        editButton.textContent = 'Edit';
+                        editButton.classList.add('edit-btn');
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.classList.add('delete-btn');
+           
+                        buttonRow.appendChild(editButton);
+                        buttonRow.appendChild(deleteButton);
+                        row.appendChild(buttonRow);
+                    });
+           
+                    addEmployeeButton.addEventListener('click', () => {
+                        window.location.href = ("./employee.html");
+                        console.log("Asdf")
+                    });
+                });
+                    </script>
+             </div>
+    </div>
+     
+    <script src = "C:\_My_Files\RMS\UI code\Project\Templates\header.js"> </script>
+     
+    <script src = "C:\_My_Files\RMS\UI code\Project\Templates\dashboard.js"> </script>
+
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function () {
+        var sidebar = document.getElementById('sidebar');
+        var toggleButton = document.getElementById('toggleButton');
+        var image = document.querySelector('.resize');
+        if (sidebar.classList.contains('collapsed')) {
+            sidebar.classList.remove('collapsed');
+            //image.style.width='1000px';
+            toggleButton.style.left = '200px';
+        } else {
+            sidebar.classList.add('collapsed');
+            toggleButton.style.left = '5px';
+            //image.style.width='1230px';
+ 
+ 
+        }
+    });
+    </script>
+     
+    </body>
+ 
+</html>
+ 
